@@ -1,6 +1,6 @@
 = Example Tycho Project to enforce wrong formatted feature.xmls
 
-This small project demonstrates that the Tycho-Plugins (v.1.1.0 und 1.2.0) have a problem to generate source-feature.xmls with correct tag order.
+This small project demonstrates that the Tycho-Plugins (v.1.1.0 and 1.2.0) have a problem to generate source-feature.xmls with correct tag order.
 
 == General Information
 The project consists of two features:
