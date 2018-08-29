@@ -1,4 +1,95 @@
-# Exaple Tycho Project to enforce wrong formatted feature.xmls
+= Example Tycho Project to enforce wrong formatted feature.xmls
 
+== How To Build
 [source,bash]
+cd xxx.main.build
 mvn clean install
+
+== Results
+Goto central/eclipse/features/xxx.feature.a/target/sources-feature/feature.xml
+
+[cols="50%a,50%a", options="header"]
+|===
+
+| expected result | actual result
+|
+[source,xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="xxx.feature.a.source" version="..." label="..." provider-name="xxx">
+   <description url="...">
+      [Enter Feature Description here.]
+   </description>
+   <copyright url="...">
+      [Enter Copyright Description here.]
+   </copyright>
+   <license url="...">
+      [Enter License Description here.]
+   </license> 
+   <includes id="xxx.feature.a" version="7.0.0.002"/>
+   <includes id="xxx.feature.b.source" version="7.0.0.003"/>  
+  <plugin id="xxx.plugin.a.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
+</feature>
+|
+[source,xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="xxx.feature.a.source" version="7.0.0.002" label="xxx.feature.a Developer Resources" provider-name="xxx">
+  <includes id="xxx.feature.a" version="7.0.0.002"/>
+  <description url="http://www.example.com/description">
+      [Enter Feature Description here.]
+   </description>
+  <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+  <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+  <plugin id="xxx.plugin.a.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
+  <includes id="xxx.feature.b.source" version="7.0.0.003"/>
+  <plugin id="xxx.plugin.a.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
+</feature>
+|===
+
+Goto central/eclipse/features/xxx.feature.b/target/sources-feature/feature.xml
+
+[cols="50%a,50%a", options="header"]
+|===
+
+| expected result | actual result
+|
+[source,xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="xxx.feature.b.source" version="..." label="...">  
+  <description>
+      [Enter Feature Description here.]
+   </description>
+  <copyright url="...">
+      [Enter Copyright Description here.]
+   </copyright>
+  <license url="...">
+      [Enter License Description here.]
+   </license>
+  <includes id="xxx.feature.b" version="7.0.0.003"/>
+  <plugin id="xxx.plugin.b.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
+</feature>
+|
+[source,xml]
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="xxx.feature.b.source" version="7.0.0.003" label="xxx.feature.b Developer Resources">
+  <includes id="xxx.feature.b" version="7.0.0.003"/>
+  <description>
+      [Enter Feature Description here.]
+   </description>
+  <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+  <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+  <plugin id="xxx.plugin.b.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
+  <plugin id="xxx.plugin.b.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
+</feature>
+|===
+
+== Conclusion
+According to the official http://help.eclipse.org/photon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Ffeature_manifest.html[feature dtd] the `<includes>`-tags should be placed between the `<license>`-tag and the `<plugin>`-tag.
+Furthermore, in both source-features duplicated plugins are present. 
