@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: xxx.plugin.a
+Bundle-SymbolicName: xxx.plugin.a;singleton:=true
+Bundle-Version: 7.0.0.001
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Vendor: xxx
+Require-Bundle: org.eclipse.ui

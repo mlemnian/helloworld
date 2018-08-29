@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>xxx</groupId>
+	<artifactId>main.build</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>main.build</name>
+	<description>main.build.</description>
+
+	<url>...</url>
+	<inceptionYear>2006</inceptionYear>
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+
+	<organization>
+		<name>xxx</name>
+		<url>xxx</url>
+	</organization>
+
+	<properties>
+		<application.version.base>7.0.0</application.version.base>
+
+		<tycho.version>1.1.0</tycho.version>
+		<tycho-extras.version>1.1.0</tycho-extras.version>
+
+		<compileSource>1.8</compileSource>
+
+		<maven.compiler.maxmem>2048</maven.compiler.maxmem>
+		<maven.compiler.meminitial>1024m</maven.compiler.meminitial>
+
+
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		<forceContextQualifier>${maven.build.timestamp}</forceContextQualifier>
+
+		<encoding.default>CP1252</encoding.default>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>eclipse-luna-repository</id>
+			<url>http://download.eclipse.org/releases/luna</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+
+	<build>
+		<plugins>
+			<!-- Plugin to enable tycho -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<configuration>
+					<createArtifactRepository>true</createArtifactRepository>
+					<includeAllDependencies>true</includeAllDependencies>
+				</configuration>
+			</plugin>
+
+			<!-- Plugin for target definition -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<pomDependencies>consider</pomDependencies>
+					<resolver>p2</resolver>
+					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+					<resolveWithExecutionEnvironmentConstraints>false</resolveWithExecutionEnvironmentConstraints>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho.version}</version>
+					<configuration>
+						<compilerVersion>${compileSource}</compilerVersion>
+						<compilerArgument>-err:-forbidden</compilerArgument>
+					</configuration>
+				</plugin>
+
+				<!-- To build p2 update sites and Eclipse products -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-repository-plugin</artifactId>
+					<version>${tycho.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-versions-plugin</artifactId>
+					<version>${tycho.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<modules>
+		<module>../central/eclipse/plugins/xxx.plugin.a</module>
+		<module>../central/eclipse/plugins/xxx.plugin.b</module>
+		<module>../central/eclipse/features/xxx.feature.a</module>
+		<module>../central/eclipse/features/xxx.feature.b</module>
+	</modules>
+</project>

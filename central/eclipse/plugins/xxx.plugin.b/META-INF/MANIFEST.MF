@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: plugin.b
+Bundle-SymbolicName: xxx.plugin.b;singleton:=true
+Bundle-Version: 7.0.0.001
+Bundle-Vendor: xxx
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
