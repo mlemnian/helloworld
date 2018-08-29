@@ -1,0 +1,4 @@
+# Exaple Tycho Project to enforce wrong formatted feature.xmls
+
+[source,bash]
+mvn clean install

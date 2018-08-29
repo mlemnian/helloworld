@@ -1,3 +1,0 @@
-# helloworld
-
-a small project
