@@ -1,5 +1,15 @@
 = Example Tycho Project to enforce wrong formatted feature.xmls
 
+This small project demonstrates that the Tycho-Plugins (v.1.1.0) have a problem to generate source-feature.xmls with correct tag order.
+
+== General Information
+The project consists of two features:
+
+. _xxx.feature.a_ (that contains plugin _xxx.plugin.a_)
+. _xxx.feature.b_ (that contains plugin _xxx.plugin.b_)
+
+Furthermore, there is a `dependency'' between _xxx.feature.a_ and _xxx.feature.b_ (_xxx.feature.a_ includes _xxx.feature.b_)
+
 == How To Build
 [source,bash]
 cd xxx.main.build
@@ -8,7 +18,7 @@ mvn clean install
 == Results
 Goto central/eclipse/features/xxx.feature.a/target/sources-feature/feature.xml
 
-[cols="50%a,50%a", options="header"]
+[cols="25%a,25%a", options="header"]
 |===
 
 | expected result | actual result
@@ -92,4 +102,4 @@ Goto central/eclipse/features/xxx.feature.b/target/sources-feature/feature.xml
 
 == Conclusion
 According to the official http://help.eclipse.org/photon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Ffeature_manifest.html[feature dtd] the `<includes>`-tags should be placed between the `<license>`-tag and the `<plugin>`-tag.
-Furthermore, in both source-features duplicated plugins are present. 
+Furthermore, in both source-features duplicated plugins are present. Maybe the duplicated build-entries (one in the pom-files and one in the build.properties) are the reason for these duplications.
