@@ -8,7 +8,7 @@ The project consists of two features:
 . _xxx.feature.a_ (that contains plugin _xxx.plugin.a_)
 . _xxx.feature.b_ (that contains plugin _xxx.plugin.b_)
 
-Furthermore, there is a `dependency'' between _xxx.feature.a_ and _xxx.feature.b_ (_xxx.feature.a_ includes _xxx.feature.b_)
+Furthermore, there is a ``dependency'' between _xxx.feature.a_ and _xxx.feature.b_ (_xxx.feature.a_ includes _xxx.feature.b_)
 
 == How To Build
 [source,bash]
