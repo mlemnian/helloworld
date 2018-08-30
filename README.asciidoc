@@ -55,7 +55,6 @@ Goto central/eclipse/features/xxx.feature.a/target/sources-feature/feature.xml
    </license>
   <plugin id="xxx.plugin.a.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
   <includes id="xxx.feature.b.source" version="7.0.0.003"/>
-  <plugin id="xxx.plugin.a.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
 </feature>
 |===
 
@@ -96,10 +95,8 @@ Goto central/eclipse/features/xxx.feature.b/target/sources-feature/feature.xml
       [Enter License Description here.]
    </license>
   <plugin id="xxx.plugin.b.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
-  <plugin id="xxx.plugin.b.source" version="7.0.0.001" download-size="0" install-size="0" unpack="false"/>
 </feature>
 |===
 
 == Conclusion
 According to the official http://help.eclipse.org/photon/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Ffeature_manifest.html[feature dtd] the `<includes>`-tags should be placed between the `<license>`-tag and the `<plugin>`-tag.
-Furthermore, in both source-features duplicated plugins are present. Maybe the duplicated build-entries (one in the pom-files and one in the build.properties) are the reason for these duplications.
