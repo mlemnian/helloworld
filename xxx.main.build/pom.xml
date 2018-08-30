@@ -25,8 +25,8 @@
 	<properties>
 		<application.version.base>7.0.0</application.version.base>
 
-		<tycho.version>1.1.0</tycho.version>
-		<tycho-extras.version>1.1.0</tycho-extras.version>
+		<tycho.version>1.2.0</tycho.version>
+		<tycho-extras.version>1.2.0</tycho-extras.version>
 
 		<compileSource>1.8</compileSource>
 
