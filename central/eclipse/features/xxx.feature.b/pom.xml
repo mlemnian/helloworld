@@ -36,11 +36,6 @@
 						<goals>
 							<goal>source-feature</goal>
 						</goals>
-						<configuration>
-							<plugins>
-								<plugin id="xxx.plugin.b.source" version="7.0.0.001" />
-							</plugins>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
